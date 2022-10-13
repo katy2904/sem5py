@@ -3,7 +3,15 @@
 
 # кодирование
 import codemodule
-with open('input.txt', 'r') as text:
+import decodemodule
+with open('input_for_coding.txt', 'r') as text:
     for line in text:
-        with open('output.txt', 'a') as data:
+        with open('output_from_coding.txt', 'a') as data:
             data.write(codemodule.readcode(codemodule.readlist(line)) + '\n')
+
+# декодирование
+with open('output_from_coding.txt', 'r') as text:
+    for line in text:
+        print(line)
+        with open('decoding.txt', 'a') as data:
+            data.write(decodemodule.decode(line) + '\n')
