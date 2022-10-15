@@ -17,6 +17,6 @@ def player_draw(pl_1, pl_2):
             print('Ничья! Кидаем еще раз!')
 
     if (pl_1_1 + pl_1_2) > (pl_2_1 + pl_2_2):
-        return print(f'Первый ход делает {pl_1}')
+        return pl_1
     elif (pl_1_1 + pl_1_2) < (pl_2_1 + pl_2_2):
-        return print(f'Первый ход делает {pl_2}')
+        return pl_2
