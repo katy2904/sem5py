@@ -1,66 +1,86 @@
-# sweets = 25
-# K = 3
-# p1, p2 = 'sb', 'ww'
 
-#игра с человеком
+
+
 def human_vs_human(sweets, K, p1, p2):
     while sweets > 0:
-        first = int(input(f'Игрок {p1} возьмите конфеты от 1 до {K}: '))
-        print(f'Осталось {sweets - first} конфет')
-        if sweets - first <= 0:
+        if sweets <= K:
             win = p1
             break
         else:
-            second = int(input(f'Игрок {p2} возьмите конфеты от 1 до {K}: '))
-            sweets -= (first + second)
+            while True:
+                first = int(input(f'Игрок {p1} возьмите конфеты от 1 до {K}: '))
+                if first not in range(1, K + 1):
+                    print('Неверное значение, попробуй ещё раз: ')
+                else:
+                    break
+            sweets -= first
             print(f'Осталось {sweets} конфет')
-            if sweets <= 0:
+            if sweets <= K:
                 win = p2
+                break
+            else:
+                while True:
+                    second = int(input(f'Игрок {p2} возьмите конфеты от 1 до {K}: '))
+                    if second not in range(1, K + 1):
+                        print('Неверное значение, попробуй ещё раз: ')
+                    else:
+                        break
+                sweets -= second
+                print(f'Осталось {sweets} конфет')
     return win
 
-#print(human_vs_human(sweets, K, p1, p2))
 
-#игра с умным ботом
+
 def smart_bot_step(sweets, K):
-    if sweets > K:
-        step = sweets % (K + 1)
-    else:
-        step = K
-    return step
+    return sweets % (K + 1)
 
 
 def human_vs_smartbot(sweets, K, p1, p2):
     while sweets > 0:
-        first = int(input(f'Игрок {p1} возьмите конфеты от 1 до {K}: '))
-        sweets -= first
-        print(f'Осталось {sweets} конфет')
-        if sweets <= 0:
+        if sweets <= K:
             win = p1
             break
         else:
-            second = smart_bot_step(sweets, K)
-            print(f'Бот берет {second} конфет')
-            sweets -= second
+            while True:
+                first = int(input(f'Игрок {p1} возьмите конфеты от 1 до {K}: '))
+                if first not in range(1, K + 1):
+                    print('Неверное значение, попробуй ещё раз: ')
+                else:
+                    break
+            sweets -= first
             print(f'Осталось {sweets} конфет')
-            if sweets <= 0:
+            if sweets <= K:
                 win = p2
+                break
+            else:
+                second = smart_bot_step(sweets, K)
+                print(f'Бот берет {second} конфет')
+                sweets -= second
+                print(f'Осталось {sweets} конфет')
+
     return win
 
 def smartbot_vs_human(sweets, K, p1, p2):
     while sweets > 0:
-        first = smart_bot_step(sweets, K)
-        print(f'Бот берет {first} конфет')
-        sweets -= first
-        print(f'Осталось {sweets} конфет')
-        if sweets <= 0:
+        if sweets <= K:
             win = p1
             break
         else:
-            second = int(input(f'Игрок {p1} возьмите конфеты от 1 до {K}: '))
-            sweets -= second
+            first = smart_bot_step(sweets, K)
+            print(f'Бот берет {first} конфет')
+            sweets -= first
             print(f'Осталось {sweets} конфет')
-            if sweets <= 0:
+            if sweets <= K:
                 win = p2
+                break
+            else:
+                while True:
+                    second = int(input(f'Игрок {p2} возьмите конфеты от 1 до {K}: '))
+                    if second not in range(1, K + 1):
+                        print('Неверное значение, попробуй ещё раз: ')
+                    else:
+                        break
+                sweets -= second
+                print(f'Осталось {sweets} конфет')
     return win
 
-#print(win)
