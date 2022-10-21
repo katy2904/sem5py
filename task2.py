@@ -7,9 +7,9 @@
 import draw
 import game_versions
 
-print('Давай поиграем!'
-      'На столе лежит N конфет. За 1 ход можно взять не более K конфет. Все конфеты достанутся тому,'
-      ' кто сделает последний ход')
+print('Давай поиграем! Смысл игры простой:')
+print('На столе лежит N конфет. За 1 ход можно взять не более K конфет. Все конфеты достанутся '
+      'тому, кто сделает последний ход')
 
 version = int(input('Как будем играть? 0 - против человека, 1 - против бота: '))
 player1 = input('Введите имя первого игрока: ')
@@ -31,14 +31,11 @@ if p1 == player1:
 else:
       p2 = player1
 
-
-win = game_versions.human_vs_human(N, K, p1, p2)
-
-
-
-
-
-
-
+if version == 0:
+      win = game_versions.human_vs_human(N, K, p1, p2)
+elif version == 1 and p1 == player1:
+      win = game_versions.human_vs_smartbot(N, K, p1, p2)
+else:
+      win = game_versions.smartbot_vs_human(N, K, p1, p2)
 
 print(f'Поздравляю с победой, {win}!')
