@@ -33,7 +33,3 @@ def decode(x):
                     string += lit * (num // count)
     return string
 
-# with open('output_from_coding.txt', 'r') as text:
-#     z = text.read()
-#     print(z)
-    print(decode('3W3B4W1B2W'))
